@@ -26,6 +26,8 @@
       font-weight: 900;
       font-size: 10rem;
       color: #FFFFFF;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     /* WebKit */
@@ -63,18 +65,27 @@
 
     video {
       position: fixed;
-      width: 2px;
-      height: 2px;
+      width: 5px;
+      height: 5px;
 
       top: 0;
-      left: 0;
       right: auto;
+      bottom: auto;
+      left: 0;
     }
 
     video:nth-of-type(2) {
       top: 0;
-      left: auto;
       right: 0;
+      bottom: auto;
+      left: auto;
+    }
+
+    video:nth-of-type(3) {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
     }
   </style>
 </head>
@@ -115,7 +126,7 @@
       <details>
         <summary>How does this work?</summary>
         <p>
-          There is a hidden HDR video playing somewhere on this page. When a HDR-capable browser encounters one, it switches to HDR mode. For some reason, CSS backdrop-filter + brightness >100% combo seems to behave like HDR—reaching beyond the user-controlled display brightness, up to the maximum HDR brightness—while the everything in between follow along. At least that's the overall idea, but I still don't know exactly why it works; especially why with those two CSS properties.
+          There are hidden HDR videos playing at the corners of this page. When a HDR-capable browser encounters one, it switches to HDR mode. For some reason, CSS backdrop-filter + brightness >100% combo seems to behave like HDR—reaching beyond the user-controlled display brightness, up to the maximum HDR brightness—while the everything in between follow along. At least that's the overall idea, but I still don't know exactly why it works; especially why with those two CSS properties.
         </p>
       </details>
     </p>
@@ -126,13 +137,17 @@
   </div>
 
   <!--
-    x265 --input white.yuv --fps 23.976 --frames 24 --input-depth 10 --input-res 3840x2160 --input-csp 1 --profile main10 --hdr --output white.hevc --master-display="L(10000000,5)" --max-cll=10000,10000 --colorprim=9 --transfer=16 && mp4box -add white.hevc white.mp4
+    x265 --input white.yuv --fps 23.976 --frames 24 --input-depth 10 --input-res 3840x2160 --input-csp 1 --profile main10 --hdr --output white.hevc --master-display="L(10000000,5)" --max-cll=10000,10000 --colorprim=9 --transfer=16 && mp4box -add white.hevc white1.mp4
   -->
-  <video autoplay loop muted src="white.mp4"></video>
+  <video autoplay loop muted src="white1.mp4"></video>
+
+  <!-- https://www.avsforum.com/threads/hdr10-test-patterns-set.2943380/ -->
+  <video autoplay loop muted src="white2.mp4"></video>
 
   <!-- 
-    ffmpeg -i white.mp4 -pix_fmt yuv420p10le -color_primaries 9 -color_trc 16 -colorspace 9 -color_range 1 -profile:v 2 -vcodec libvpx-vp9 white.webm
+    ffmpeg -i white1.mp4 -pix_fmt yuv420p10le -color_primaries 9 -color_trc 16 -colorspace 9 -color_range 1 -profile:v 2 -vcodec libvpx-vp9 white.webm
   -->
-  <video autoplay loop muted src="white.webm"></video>
+  <video autoplay loop muted src="white1.webm"></video>
+
 </body>
 </html>
