@@ -32,6 +32,10 @@
       backdrop-filter: blur(0);
     }
 
+    li {
+      margin-block-start: 0.5em;
+    }
+
     #info {
       max-width: 55rem;
       padding: 0 1rem;
@@ -71,9 +75,18 @@
     </p>
     <p>
       <details>
-        <summary>Tested on...</summary>
+        <summary>Test Results</summary>
+        <p>Works with:</p>
         <ul>
-          <li>Safari and Chrome on macOS Big Sur with MacBook Air (M1, 2020)</li>
+          <li>Safari / Chrome, macOS Big Sur, MacBook Air (M1, 2020)</li>
+          <li>Safari, macOS Big Sur, MacBook Pro (16-inch, 2019)</li>
+          <li>iOS 14, iPhone XS / iPhone 12 (Pro) / iPad Pro 11-inch</li>
+        </ul>
+        <p>Does not work with:</p>
+        <ul>
+          <li>Firefox (See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1539685">the bug</a>)</li>
+          <li>Edge, Xbox Series X (Crashes the console)</li>
+          <li>webOS 4.5, LG 43UM7800ENA</li>
         </ul>
       </details>
     </p>
