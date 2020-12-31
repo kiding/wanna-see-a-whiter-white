@@ -26,10 +26,23 @@
       font-weight: 900;
       font-size: 10rem;
       color: #FFFFFF;
+    }
 
-      filter: brightness(10);
-      -webkit-backdrop-filter: blur(0);
-      backdrop-filter: blur(0);
+    /* WebKit */
+    @supports (-webkit-backdrop-filter: blur(0)) {
+      #tester {
+        filter: brightness(10);
+        -webkit-backdrop-filter: brightness(1); 
+      }
+    }
+
+    /* Blink */
+    @supports (backdrop-filter: blur(0)) {
+      #tester {
+        filter: brightness(10);
+        backdrop-filter: brightness(10); 
+        text-shadow: 0 0 10px #FFFFFF;
+      }
     }
 
     li {
@@ -113,13 +126,5 @@
     ffmpeg -i white.mp4 -pix_fmt yuv420p10le -color_primaries 9 -color_trc 16 -colorspace 9 -color_range 1 -profile:v 2 -vcodec libvpx-vp9 white.webm
   -->
   <video autoplay loop muted src="white.webm"></video>
-  
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      if (/Chrome/.test(navigator.userAgent)) {
-        document.getElementById("tester").style.textShadow = "0 0 10px #FFFFFF";
-      }
-    });
-  </script>
 </body>
 </html>
