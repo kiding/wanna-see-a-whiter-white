@@ -142,7 +142,7 @@
           There are hidden HDR videos playing at the corners of this page. When a HDR-capable browser encounters one, it switches to HDR mode. For some reason, CSS backdrop-filter + brightness >100% combo seems to behave like HDR—reaching beyond the user-controlled display brightness, up to the maximum HDR brightness—while the everything in between follow along. At least that's the overall idea, but I still don't know exactly why it works; especially why with those two CSS properties.
         </p>
         <p>
-          Once the system switches to HDR mode, it seems to affect the whole display. That says, as long as you can trigger HDR mode by any means—simply playing an HDR video on Movist, for example—the CSS trick works on Safari / Chrome / Edge with HDR-capable / SDR(See: <a href="https://developer.apple.com/documentation/metal/drawable_objects/displaying_hdr_content_in_a_metal_layer">EDR</a>) devices. This indicates this bug and/or feature is mostly tied to the OS subsystem.
+          Once the system switches to HDR mode, it seems to affect the whole display. That says, as long as you can trigger HDR mode by any means—simply playing an HDR video on Movist, for example—the CSS trick works on Safari / Chrome / Edge with HDR-capable / SDR devices. This indicates this bug and/or feature is mostly tied to <a href="https://developer.apple.com/documentation/metal/drawable_objects/displaying_hdr_content_in_a_metal_layer">the Metal Layer.</a>
         </p>
       </details>
     </p>
