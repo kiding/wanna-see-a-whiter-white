@@ -1,0 +1,27 @@
+{
+  "name": "wanna-see-a-whiter-white",
+  "version": "1.0.0",
+  "description": "Wanna see a whiter white? CSS trick/bug to display a brighter white by exploiting browsers' HDR capability and Apple's EDR system",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiding/wanna-see-a-whiter-white.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiding/wanna-see-a-whiter-white/discussions"
+  },
+  "homepage": "https://fff.kidi.ng/",
+  "devDependencies": {
+    "autoprefixer": "10.4.13",
+    "parcel": "2.8.3",
+    "postcss": "8.4.21",
+    "tailwindcss": "3.2.4"
+  }
+}
