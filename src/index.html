@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanna see a whiter white?</title>
+  <meta name="description"
+    content="Wanna see a whiter white? CSS trick/bug to display a brighter white by exploiting browsers' HDR capability and Apple's EDR system" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="text-base leading-normal font-normal tracking-tight font-sans">
+  <header class="md:px-14 px-10 hyphens-auto max-w-3xl mx-auto my-2 text-center">
+    <h1 id="whiter"
+      class="font-black text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] select-none text-white leading-snug sm:leading-tight mt-4"
+      title="That is #ffffff">
+      White.
+    </h1>
+    <ul class="text-start list-disc list-inside text-lg mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+      <li>Set the display brightness to less than 100%.</li>
+      <li>
+        Turn off
+        <a href="https://support.apple.com/en-us/HT205234" class="text-link hover:underline">Low Power Mode on iOS</a>.
+      </li>
+    </ul>
+  </header>
+  <video width="640" height="200" poster="./videos/white.png" preload="auto" autoplay loop muted controls
+    class="w-full h-1" title="HDR Video">
+    <!-- 
+    ffmpeg -i white1.mp4 -pix_fmt yuv420p10le -color_primaries 9 -color_trc 16 -colorspace 9 -color_range 1 -profile:v 2 -vcodec libvpx-vp9 white.webm
+  -->
+    <source src="./videos/white1.webm" type="video/webm" />
+    <!--
+    x265 --input white.yuv --fps 23.976 --frames 24 --input-depth 10 --input-res 3840x2160 --input-csp 1 --profile main10 --hdr --output white.hevc --master-display="L(10000000,5)" --max-cll=10000,10000 --colorprim=9 --transfer=16 && mp4box -add white.hevc white1.mp4
+  -->
+    <source src="./videos/white1.mp4" type="video/mp4" />
+    <!-- https://www.avsforum.com/threads/hdr10-test-patterns-set.2943380/ -->
+    <source src="./videos/white2.mp4" type="video/mp4" />
+    Turn on JavaScript to see the video.
+  </video>
+  <main class="md:px-14 px-10 hyphens-auto max-w-3xl mx-auto mb-2">
+    <h2 class="font-bold text-xl leading-loose">What's that?</h2>
+    <p>
+      The RGB color values of <i>the message</i> and <i>the background</i> are
+      the same. Take a screenshot then compare them in an image editor.</p>
+    <p>Your
+      experience may vary depending on browser, OS version, display,
+      everything. Tests so far seem to indicate this only works on
+      <b>the Apple platforms.</b>
+    </p>
+
+    <details class="my-1 lg:my-2 px-2 py-1 rounded border">
+      <summary class="leading-loose hover:cursor-pointer">
+        How does this work?
+      </summary>
+      <p class="py-1">
+        By combining an HDR video <i>(little box below heading)</i> with CSS
+        hack, the white color of the text becomes even brighter.
+      </p>
+      <pre
+        class="border break-words cursor-copy font-mono font-normal hyphens-none leading-relaxed my-4 overflow-x-auto px-5 py-4 rounded select-all text-sm whitespace-pre-line"><code>#whiter {
+        filter: brightness(10);
+        backdrop-filter: brightness(1);
+      }</code></pre>
+      <p class="py-1">
+        When a HDR-capable browser encounters one, it switches to HDR mode.
+        The exact reason for this behavior is not yet known.
+      </p>
+      <p class="py-1">
+        You may hide this video visually to achieve better webpage look.
+      </p>
+      <p class="py-1">
+        Read more about
+        <a href="https://developer.apple.com/documentation/metal/drawable_objects/displaying_hdr_content_in_a_metal_layer"
+          class="text-link hover:underline">playing HDR content with the EDR system</a>.
+      </p>
+    </details>
+
+    <details class="my-1 lg:my-2 px-2 py-1 rounded border">
+      <summary class="leading-loose hover:cursor-pointer">
+        Browser Support
+      </summary>
+      <p class="py-1">
+        Works with
+        <a href="https://support.apple.com/en-us/HT210980" class="text-link hover:underline">HDR-capable Macs</a>
+        and iPhones:
+      </p>
+      <ul class="list-disc list-inside">
+        <li>Safari / Chrome / Edge, macOS Big Sur, MacBook Air (M1, 2020)</li>
+        <li>Safari, macOS Big Sur, MacBook Pro (15-inch, 2018)</li>
+        <li>Safari, macOS Big Sur, MacBook Pro (16-inch, 2019)</li>
+        <li>Safari, macOS Big Sur, iMac (Retina 5K, 27-inch, 2020)</li>
+        <li>iOS 14, iPhone X</li>
+        <li>iOS 14, iPhone XS / XR</li>
+        <li>iOS 14, iPhone 12 / iPhone 12 Pro</li>
+        <li>iOS 14, iPad Pro 11-inch (2nd generation)</li>
+      </ul>
+      <p class="py-1">Works with SDR Macs with Blink browsers:</p>
+      <ul class="list-disc list-inside">
+        <li>
+          Chrome / Edge, macOS Big Sur, iMac (Retina 5K, 27-inch, Late 2015)
+        </li>
+      </ul>
+      <p class="py-1">Does not work with:</p>
+      <ul class="list-disc list-inside">
+        <li>
+          Firefox (Does not support
+          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1539685">HDR</a>)
+        </li>
+        <li>
+          webOS TV (Does not support
+          <a href="http://webostv.developer.lge.com/discover/specifications/web-engine/">backdrop-filter</a>)
+        </li>
+        <li>Chrome, Google Pixel 4a</li>
+        <li>Edge, Samsung Galaxy S10</li>
+        <li>PlayStation 4</li>
+        <li>Xbox Series X (Might crash the console)</li>
+        <li>Chrome, Windows 10, LG 27UK600 / LG 34WL600</li>
+      </ul>
+    </details>
+  </main>
+  <footer class="py-1 lg:py-2 px-10 md:px-14 hyphens-auto max-w-3xl mx-auto">
+    <p>
+      Project on
+      <a href="https://github.com/kiding/wanna-see-a-whiter-white" class="text-link hover:underline">GitHub</a>. Short
+      URL
+      <code><a href="https://fff.kidi.ng" class="text-link hover:underline"
+            >fff.kidi.ng</a
+          ></code>.<br />
+      Created by
+      <a href="https://kidi.ng" class="text-link hover:underline">kiding</a>.
+      Inspired by
+      <a href="https://xenosium.com" class="text-link hover:underline">zvuc</a>.
+    </p>
+  </footer>
+</body>
+
+</html>

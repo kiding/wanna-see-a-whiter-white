@@ -1,0 +1,15 @@
+/**
+ TailwindCSS
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ Whiter white hack
+*/
+#whiter,
+.even-brighter {
+  filter: brightness(10);
+  backdrop-filter: brightness(1);
+}
