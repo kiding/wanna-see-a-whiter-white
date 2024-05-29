@@ -10,6 +10,5 @@
 */
 #whiter,
 .even-brighter {
-  filter: brightness(10);
-  backdrop-filter: brightness(1);
+  backdrop-filter: brightness(10);
 }
