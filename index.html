@@ -28,23 +28,9 @@
       color: #FFFFFF;
       -webkit-user-select: none;
       user-select: none;
-    }
 
-    /* WebKit */
-    @supports (-webkit-backdrop-filter: blur(0)) {
-      #tester {
-        filter: brightness(10);
-        -webkit-backdrop-filter: brightness(1); 
-      }
-    }
-
-    /* Blink */
-    @supports (backdrop-filter: blur(0)) {
-      #tester {
-        filter: brightness(10);
-        backdrop-filter: brightness(10); 
-        text-shadow: 0 0 10px #FFFFFF;
-      }
+      filter: brightness(1);
+      -webkit-backdrop-filter: brightness(10);
     }
 
     li {
@@ -105,36 +91,6 @@
     <p>
       Your experience may vary depending on browser, OS version, display, everything.<br>
       Tests so far seem to indicate this only works on <b>the Apple platforms.</b>
-    </p>
-    <p>
-      <details>
-        <summary>Test Results</summary>
-        <p>Works with <a href="https://support.apple.com/en-us/HT210980">HDR-capable Macs</a> and iPhones:</p>
-        <ul>
-          <li>Safari / Chrome / Edge, macOS Big Sur, MacBook Air (M1, 2020)</li>
-          <li>Safari, macOS Big Sur, MacBook Pro (15-inch, 2018)</li>
-          <li>Safari, macOS Big Sur, MacBook Pro (16-inch, 2019)</li>
-          <li>Safari, macOS Big Sur, iMac (Retina 5K, 27-inch, 2020)</li>
-          <li>iOS 14, iPhone X</li>
-          <li>iOS 14, iPhone XS / XR</li>
-          <li>iOS 14, iPhone 12 / iPhone 12 Pro</li>
-          <li>iOS 14, iPad Pro 11-inch (2nd generation)</li>
-        </ul>
-        <p>Works with SDR Macs with Blink browsers:</p>
-        <ul>
-          <li>Chrome / Edge, macOS Big Sur, iMac (Retina 5K, 27-inch, Late 2015)</li>
-        </ul>
-        <p>Does not work with:</p>
-        <ul>
-          <li>Firefox (Does not support <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1539685">HDR</a>)</li>
-          <li>webOS TV (Does not support <a href="http://webostv.developer.lge.com/discover/specifications/web-engine/">backdrop-filter</a>)</li>
-          <li>Chrome, Google Pixel 4a</li>
-          <li>Edge, Samsung Galaxy S10</li>
-          <li>PlayStation 4</li>
-          <li>Xbox Series X (Might crash the console)</li>
-          <li>Chrome, Windows 10, LG 27UK600 / LG 34WL600</li>
-        </ul>
-      </details>
     </p>
     <p>
       <details>
