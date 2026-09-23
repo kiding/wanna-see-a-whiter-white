@@ -20,8 +20,8 @@
   "homepage": "https://fff.kidi.ng/",
   "devDependencies": {
     "autoprefixer": "10.4.13",
-    "parcel": "2.8.3",
-    "postcss": "8.5.3",
+    "parcel": "2.16.4",
+    "postcss": "8.5.28",
     "tailwindcss": "3.2.4"
   }
 }
